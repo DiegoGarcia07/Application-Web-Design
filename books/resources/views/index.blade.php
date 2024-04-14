@@ -20,6 +20,7 @@
                 <th>Autor</th>
                 <th>ISBN</th>
                 <th>Año de Publicación</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                     <td>{{ $book->author }}</td>
                     <td>{{ $book->isbn }}</td>
                     <td>{{ $book->published_year }}</td>
+                    <td><img src="{{ asset('storage/' . $book->images) }}"  style="width: 100px; height: 150px; object-fit: cover;"></td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('books.edit', $book->id) }}">Edit</a>
                         <form action="{{route('books.destroy', $book->id)}}" method="POST" class="d-inline">

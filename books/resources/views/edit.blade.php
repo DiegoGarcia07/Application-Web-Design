@@ -14,27 +14,51 @@
     <div class="container">
     <h2>Edit</h2>
 
-    <form class="book-form" action= "{{route ('books.update', $book ->id)}}" method = "POST">
+    <form class="book-form" action= "{{route ('books.update', $book ->id)}}" method = "POST"  enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <label for= "">Title</label><br>
-        <input type="text" id="title" name ="title" value="{{ $book ->title}}">
-        <br>
+            <input type="text" id="title" name ="title" value="{{$book ->title}}">
+            @error('title')
+                <div>{{$message}}</div>
+                
+            @enderror
+            <br>
 
-        <label for= "">Author</label><br>
-        <textarea id="author" name ="author"> {{ $book ->author}}</textarea>
-        <br>
+            <label for= "">Author</label><br>
+            <input type="text" id="author" name ="author" value="{{$book ->author}}">
+            @error('author')
+            <div>{{$message}}</div>
+            
+             @enderror
+            <br>
 
-        <label for= "">ISBN</label><br>
-        <input type="text" id="isbn" name ="isbn" value="{{ $book ->isbn}}">
-        <br>
+            <label for= "">ISBN</label><br>
+            <input type="text" id="isbn" name ="isbn" value="{{$book ->isbn}}">
+            @error('isbn')
+            <div>{{$message}}</div>
+            
+             @enderror
+            <br>
 
-        <label for= "">Published year</label><br>
-        <input type="text" id="published_year" name ="published_year" value="{{ $book ->published_year}}">
-        <br>
+            <label for= "">Published Year</label><br>
+            <input type="text" id="published_year" name ="published_year" value="{{$book ->published_year}}">
+            @error('published_year')
+            <div>{{$message}}</div>
+            
+            @enderror
+            <br>
 
-        <button type="submit" class="btn btn-custom">Update book</button>
+            <label for= "">Image</label><br>
+            <input type="file" id="imageID" name ="image" > 
+            @error('image')
+            <div>{{$message}}</div>
+            
+            @enderror
+            <br>
+
+            <button type="submit" class="custom-add-button">Edit book</button>
 
         </form>
     </div>
